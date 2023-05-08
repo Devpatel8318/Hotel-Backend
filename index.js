@@ -377,3 +377,5 @@ res.json({ message: "OK"});
 
 
 app.listen(4000);
+
+module.exports = app;
