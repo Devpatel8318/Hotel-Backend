@@ -1,4 +1,8 @@
 .idea
 api/node_modules
 api/.env
-api/uploads/*
+/node_modules
+.idea
+node_modules
+.env
+uploads/*
