@@ -18,7 +18,7 @@ const path = require('path');
 const url = require('url');
 
 const bcryptSalt = bcrypt.genSaltSync(10);
-const jwtSecret = process.env.JWT_SECRET ;
+const jwtSecret = process.env.JWT_SECRET;
 
 
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -47,7 +47,9 @@ async function connectDB() {
 }
 connectDB();
 
-
+app.get("/", (req, res) => {
+    res.send("Express on Vercel");
+});
 
 
 app.post('/register', async (req, res) => {
@@ -128,7 +130,7 @@ app.post('/logout', (req, res) => {
 
 async function downloadImage(imageUrl) {
     try {
- 
+
         const options = {
             url: imageUrl,
             dest: '/tmp' // set a temporary destination to store the downloaded image file
@@ -371,7 +373,7 @@ app.post('/devupload', async (req, res) => {
 });
 
 app.get('/dev', async (req, res) => {
-res.json({ message: "OK"});
+    res.json({ message: "OK" });
 })
 
 
