@@ -80,13 +80,13 @@ app.post('/login', async (req, res) => {
             if (passOK) {
                 const token = jwt.sign({ email: userDoc.email, id: userDoc._id }, jwtSecret, {
                 });
-                res.cookie('token', token, { httpOnly: false, secure: true, sameSite: "none", domain: "hotel-dev-backend.onrender.com", expires: new Date(Date.now() + 5 * 60 * 60 * 1000) }).json({ status: "ok", data: token, userDoc });
+                res.cookie('token', token, { httpOnly: false, secure: true, sameSite: "none", domain: "hotel-dev-backend.onrender.com", expires: new Date(Date.now() + 5 * 60 * 60 * 1000) }).json({ mymessage: "ok", data: token, userDoc });
             } else {
-                res.status(422).json("Wrong Password")
+                res.status(422).json({mymessage:"Wrong Password"});
             }
         }
         else {
-            res.status(422).json("Not Found");
+            res.status(422).json({mymessage:"Not Found"});
         }
     }
     catch (e) {
