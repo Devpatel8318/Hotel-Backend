@@ -80,7 +80,7 @@ app.post('/login', async (req, res) => {
             if (passOK) {
                 const token = jwt.sign({ email: userDoc.email, id: userDoc._id }, jwtSecret, {
                 });
-                res.cookie('token', token, { httpOnly: false, secure: true, sameSite: "none", domain: ".onrender.com", expires: new Date(Date.now() + 5 * 60 * 60 * 1000) }).json({ status: "ok", data: token, userDoc });
+                res.cookie('token', token, { httpOnly: false, secure: true, sameSite: "none", domain: "hotel-dev-backend.onrender.com", expires: new Date(Date.now() + 5 * 60 * 60 * 1000) }).json({ status: "ok", data: token, userDoc });
             } else {
                 res.status(422).json("Wrong Password")
             }
@@ -120,7 +120,7 @@ app.get('/profile', (req, res) => {
 
 app.post('/logout', (req, res) => {
     try {
-        res.cookie('token', "", { httpOnly: false, secure: true, sameSite: "none", domain: "localhost", expires: new Date(Date.now() + 15 * 60 * 1000) }).json("deleted");
+        res.cookie('token', "", { httpOnly: false, secure: true, sameSite: "none", domain: "hotel-dev-backend.onrender.com", expires: new Date(Date.now() + 15 * 60 * 1000) }).json("deleted");
     }
     catch (e) {
         res.send({ err: e.message }).status(500);
